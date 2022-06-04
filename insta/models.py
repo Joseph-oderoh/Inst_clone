@@ -15,21 +15,31 @@ class Profile(models.Model):
     last_name=models.CharField(max_length=20,null=True)
     user_name=models.CharField(max_length=20,null=True)
     # user=models.OneToOneField(User,on_delete=models.CASCADE)
+    def __str__(self):
+        return self.bio
     def save_profile(self):
         self.save()
 
-    @classmethod
-    def get_profile(cls):
-        profile = Profile.objects.all()
-        return profile
+    # update profile
+    def update_profile(self, name):
+        self.name = name
+        self.save()
 
+     # delete profile from database
+    def delete_profile(self):
+        self.delete()
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()
     @classmethod
-    def find_profile(cls,search_term):
-        profile = Profile.objects.filter(user__username__icontains=search_term)
-        return profile
-    def __str__(self):
-       return str(self.user_name)
-   
+    def search_profiles(cls, search_term):
+        profiles = cls.objects.filter(user__username__icontains=search_term).all()
+        return profiles
    
 class Image(models.Model):
     image = CloudinaryField('pictures')
