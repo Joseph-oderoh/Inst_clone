@@ -33,6 +33,7 @@ DEBUG = config('DEBUG', cast=bool)
 
 INSTALLED_APPS = [
     'bootstrap4',
+    'cloudinary',
     'insta.apps.InstaConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -121,7 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
