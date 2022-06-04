@@ -45,7 +45,7 @@ class ImageTestCase(TestCase):
     def test_delete(self):
         self.user.save()
         self.image.save_image()
-        self.comment.save_comments()
+        self.comment.save_comment()
         self.like.save_likes()
         Likes.objects.get(id =self.like.id).delete()
         Comment.objects.get(id =self.comment.id).delete()
