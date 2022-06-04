@@ -15,6 +15,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="/accounts/password/change">Change Password</a>
+            <a class="dropdown-item" href="{% url 'profile' profileId=profile.id %}">Profile</a>
             <a class="dropdown-item" href="/logout">Logout</a>
           </div>
         </li>
