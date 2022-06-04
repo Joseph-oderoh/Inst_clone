@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
-from django.forms import ModelForm
 from cloudinary.models import CloudinaryField
 
 
@@ -33,14 +32,13 @@ class Profile(models.Model):
         if created:
             Profile.objects.create(user=instance)
 
-    @receiver(post_save, sender=User)
-    def save_user_profile(sender, instance, **kwargs):
-        instance.profile.save()
+    # @receiver(post_save, sender=User)
+    # def save_user_profile(sender, instance, **kwargs):
+    #     instance.profile.save()
     @classmethod
     def search_profiles(cls, search_term):
         profiles = cls.objects.filter(user__username__icontains=search_term).all()
         return profiles
-   
 class Image(models.Model):
     image = CloudinaryField('pictures')
     image_date = models.DateTimeField(auto_now_add=True ,null=True)
