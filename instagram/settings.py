@@ -34,7 +34,9 @@ DEBUG = config('DEBUG', cast=bool)
 INSTALLED_APPS = [
     'bootstrap4',
     'cloudinary',
+    'crispy_forms',
     'insta.apps.InstaConfig',
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

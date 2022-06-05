@@ -10,8 +10,10 @@ from django.contrib import messages
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def homepage(request):
-    profiles=   Profile.objects.all()
-    return render(request, 'index.html', {'profiles': profiles})
+    images=Image.objects.all()
+    
+   
+    return render(request,'index.html',{'images':images})
 def single_image(request,image_id):
     image=get_object_or_404(Image,id=image_id)
     comments=Comment.objects.filter(image=image).all()

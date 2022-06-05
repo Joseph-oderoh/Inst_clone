@@ -12,14 +12,14 @@ from django.db.models.signals import post_save
 
 # Create your models here.
 class Image(models.Model):
-    image = CloudinaryField('pictures')
+    image = models.ImageField('pictures',default='DEFAULT VALUE')
     image_date = models.DateTimeField(auto_now_add=True ,null=True)
     name = models.CharField(max_length =30)
     caption = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
-        return self.user
+        return self.name
     # save image
     def save_image(self):
         self.save()
