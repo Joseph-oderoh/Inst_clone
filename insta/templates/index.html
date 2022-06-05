@@ -1,4 +1,5 @@
 {%extends 'base.html'%}
+{% load bootstrap4 %} 
 {% load crispy_forms_tags %}
 {% block content %}
 {{block.super}}
@@ -8,7 +9,7 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-3"></div>
+            
             <div class="col-md-6">
                 {% if images %}
                 {% for image in images %}
@@ -55,12 +56,7 @@
                                     </p>
 
                                 </div>
-                                <div class="ml-3">
-                                    <a href="#"><i class="fas fa-share-alt"></i></a>
-                                </div>
-                                <div class="ml-3">
-                                    <a href="#"><span class="mdi mdi-bookmark-box-multiple-outline"></span></a>
-                                </div>
+                             
                             </div>
                             <div>
                                 <p><strong class="ml-3 image_likes">
@@ -86,8 +82,16 @@
                     </div>
                     {% endfor %}
                     {% endif %}
+
+                    
                 </div>
             </div>
+       
+        
         </div>
+
+
+        <div class="">
+            
         </div>
             {%endblock%}

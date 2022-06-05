@@ -4,6 +4,19 @@
     box-sizing: border-box;
 }
 
-nav{
+
+
+body{
     background-color: pink;
+}
+
+
+.row{
+     display: flex;
+     flex-wrap: wrap;
+}
+
+.prof{
+    padding: 30px;
+    background-color: wheat;
 }
