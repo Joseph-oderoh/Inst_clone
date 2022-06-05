@@ -42,14 +42,16 @@ class Image(models.Model):
         images = cls.objects.filter(name__icontains=search_term).all()
         return images
 class Profile(models.Model):
+   
     profile_photo=CloudinaryField('pictures')
     bio=models.TextField()
     first_name=models.CharField(max_length=20,null=True)
     last_name=models.CharField(max_length=20,null=True)
     user_name=models.CharField(max_length=20,null=True)
-    # user=models.OneToOneField(User,on_delete=models.CASCADE)
+   
     def __str__(self):
-        return (self.user_name)
+        return f'{self.user_name} Profile'
+
     def save_profile(self):
         self.save()
 
