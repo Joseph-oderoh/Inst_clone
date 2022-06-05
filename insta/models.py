@@ -12,7 +12,7 @@ from django.db.models.signals import post_save
 
 # Create your models here.
 class Image(models.Model):
-    image = models.ImageField('pictures',default='DEFAULT VALUE')
+    image = CloudinaryField('pictures')
     image_date = models.DateTimeField(auto_now_add=True ,null=True)
     name = models.CharField(max_length =30)
     caption = models.TextField()

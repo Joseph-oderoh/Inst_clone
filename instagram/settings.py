@@ -15,6 +15,9 @@ import os
 import dj_database_url
 from decouple import config, Csv
 import django_heroku
+import cloudinary.api
+import cloudinary.uploader
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -93,13 +96,24 @@ if config('MODE')=="dev":
 else:
    DATABASES = {
        'default': dj_database_url.config(
-           default=config('DATABASE_URL')
+           default=config('DATABASE_URL') 
        )
    }
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 ALLOWED_HOSTS = []
+
+
+
+cloudinary.config( 
+  cloud_name = 'djhwy1ht2',
+  api_key = '563546575339531', 
+  api_secret = '4NWY4_bGMFOijAAlKMCpw0ftIDY'
+)
+
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -149,3 +163,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+

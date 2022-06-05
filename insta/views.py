@@ -27,11 +27,11 @@ def single_image(request,image_id):
             
             comment.image = image
             comment.save()
-        return redirect('homepage')
+        return redirect('landing')
     else:
         
         form = CommentForm()
-    return render(request, 'image.html', {'image': image, 'form':form, 'comments':comments})
+    return render(request, 'pictures.html', {'image': image, 'form':form, 'comments':comments})
     
 
 
@@ -63,7 +63,7 @@ def add_image(request):
             image.user=current_user
             image.save()
             messages.success(request,('Image was posted successfully!'))
-            return redirect('homepage')
+            return redirect('landing')
     else:
             form=AddImageForm()
     return render(request,'add_image.html',{'form':form})
