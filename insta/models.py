@@ -19,7 +19,7 @@ class Image(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
-        return self.name
+        return self.user
     # save image
     def save_image(self):
         self.save()
@@ -49,7 +49,7 @@ class Profile(models.Model):
     user_name=models.CharField(max_length=20,null=True)
     # user=models.OneToOneField(User,on_delete=models.CASCADE)
     def __str__(self):
-        return self.bio
+        return self.user_name
     def save_profile(self):
         self.save()
 
@@ -66,9 +66,9 @@ class Profile(models.Model):
         if created:
             Profile.objects.create(user=instance)
 
-    @receiver(post_save, sender=User)
-    def save_user_profile(sender, instance, **kwargs):
-        instance.profile.save()
+    # @receiver(post_save, sender=User)
+    # def save_user_profile(sender, instance, **kwargs):
+    #     instance.profile.save()
     @classmethod
     def search_profiles(cls, search_term):
         profiles = cls.objects.filter(user__username__icontains=search_term).all()
@@ -108,23 +108,4 @@ class Likes(models.Model):
      # delete like from database
     def delete_likes(self):
         self.delete()
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['user', 'image'], name="unique_like"),
-        ]
-class AddImageForm(ModelForm):
-    class Meta:
-        model = Image
-        fields = ['image','caption','name']
-class UpdateProfileForm(ModelForm):
-    class Meta:
-        model = Profile
-        fields = ['bio','profile_photo']
-class CommentForm(ModelForm):
-    class Meta:
-        model=Comment
-        
-        fields=['content']
-        widgets= {
-            'content':forms.Textarea(attrs={'rows':2,})
-        }
+   

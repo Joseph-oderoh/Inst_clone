@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render,redirect
 import datetime as dt
 from django.contrib.auth.decorators import login_required
-from .models import *
+from .forms import *
 from .models import Image,Profile,Likes,Comment
 from django.http  import HttpResponse,Http404
 from django.contrib import messages
@@ -10,10 +10,8 @@ from django.contrib import messages
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def homepage(request):
-    images=Image.objects.all()
-    
-   
-    return render(request,'index.html',{'images':images})
+    profiles=   Profile.objects.all()
+    return render(request, 'index.html', {'profiles': profiles})
 def single_image(request,image_id):
     image=get_object_or_404(Image,id=image_id)
     comments=Comment.objects.filter(image=image).all()
@@ -27,7 +25,7 @@ def single_image(request,image_id):
             
             comment.image = image
             comment.save()
-        return redirect('home')
+        return redirect('homepage')
     else:
         
         form = CommentForm()
@@ -47,12 +45,13 @@ def search_results(request):
     return render(request, 'search.html')
 
 @login_required(login_url='/accounts/login/')
-def profile(request,user_id):
-    current_user=get_object_or_404(User,id=user_id)
-    # current_user = request.user
-    images = Image.objects.filter(user=current_user)
-    profile = get_object_or_404(Profile,id = current_user.id)
-    return render(request, 'profile/profile.html', {"images": images, "profile": profile})
+def profile(request,profileId):
+
+    profile = Profile.objects.get(pk = profileId)
+    images = Image.objects.filter(id=profile.id).all()
+
+    return render(request,"profile/profile.html",{"profile":profile,"images":images})
+
 @login_required(login_url='/accounts/login/')
 def add_image(request):
     if request.method=='POST':
@@ -63,7 +62,7 @@ def add_image(request):
             image.user=current_user
             image.save()
             messages.success(request,('Image was posted successfully!'))
-            return redirect('home')
+            return redirect('homepage')
     else:
             form=AddImageForm()
     return render(request,'add_image.html',{'form':form})
@@ -91,4 +90,4 @@ def like_image(request, image_id):
         like.save()
     else:
         like.delete()
-    return redirect('home')
+    return redirect('homepage')

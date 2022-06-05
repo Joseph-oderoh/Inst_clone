@@ -1,29 +1,66 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{%url 'landing'%}">InstClone</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    {% if user.is_authenticated %}
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="{%url 'landing'%}">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
-            Dropdown link
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="/accounts/password/change">Change Password</a>
-            <a class="dropdown-item" href="{% url 'profile' profile=current_user.id %}">Profile</a>
-            <a class="dropdown-item" href="/logout">Logout</a>
-          </div>
-        </li>
-      </ul>
+<nav class="navbar navbar-expand-md navbar ">
+  <div class="container">
+  <div style="margin-left: 5%;">
+  <a href="{% url 'landing' %}" class="navbar-brand mr-3">
+    <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="">
+  </a>
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation" style="margin-left: 65%;">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-nav" style="margin-left: 30%;">
+    <form class="navbar-form" role="search" method="" action="" style="margin-right:150px;" >
+      {% csrf_token %}
+      <div class="input-group">
+      <input type="text" class="form-control" placeholder="SearchByProfile" name="name">
+      <div class="input-group-btn">
+      <button class="btn btn-dark" style="margin-left: 5px;" type="submit">Search</button>
+      </div>
+      </div>
+      </form>
+    
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarToggle" style="margin-left: 2px;">
+   
+    <div class="navbar-nav mb-3 ">
+     
+{% if user.is_authenticated %}
+  <ul>
+  <li class="dropdown"style="list-style: none";>
+  <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user"aria-hidden="true"></i>
+  <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+  <li>
+  <a href="">Home</a>
+  </li>
+  <li>
+  <a href="/accounts/password/change">Change Password</a>
+  </li>
+  {% for profile in profiles%}
+  <li class="">
+    <a class="" href="{% url 'profile' profileId=profile.id %}"> profile</a>
+</li>
+{% endfor %}
+  <li>
+  <a href="/logout">Logout</a>
+  </li>
+  </ul>
+  </li>
+  </ul>
+{% else %}
+  <li>
+  <a class='btn btn-default' href="/accounts/login">Login</a>
+  </li>
+{% endif %}
+      
+        
+        
+   
     </div>
-    {% else %}
-    <li>
-      <a class='btn btn-default' href="/accounts/login">Login</a>
-    </li>
-   {% endif %}
-  </nav>
+  </div>
+</div>
+</nav>
