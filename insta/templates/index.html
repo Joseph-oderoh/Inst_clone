@@ -66,6 +66,9 @@
                                     </p>
 
                                 </div>
+
+                                <a href="/follow/follow/{{profile.user.id}}/" class="btn btn-outline-secondary btn-sm">{{follow}}follow</a> 
+                                <a href="/follow/unfollow/{{profile.user.id}}/" class="btn btn-outline-secondary btn-sm">{{unfollow}}unfollow</a>
                              
                             </div>
                             <div>
@@ -95,13 +98,14 @@
 
                     
                 </div>
+                <div class="col-md-4">
+                    <p>Suggestion </p>
+                </div>
+            
             </div>
-       
-        
-        </div>
-
-
-        <div class="">
             
         </div>
-            {%endblock%}
+
+
+    
+        {%endblock%}
