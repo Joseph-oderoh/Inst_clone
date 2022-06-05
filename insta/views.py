@@ -38,9 +38,9 @@ def single_image(request,image_id):
 @login_required
 def search_results(request):
   if 'name' in request.GET and request.GET["name"]:
-    name = request.GET.get('name')
-    users = Profile.search_profiles(name)
-    images = Image.search_images(name)
+    user_name = request.GET.get('name')
+    users = Profile.search_profiles(user_name)
+    images = Image.search_images(user_name)
     print(users)
     return render(request, 'search.html', {"users": users, "images": images})
   else:
@@ -91,4 +91,4 @@ def like_image(request, image_id):
         like.save()
     else:
         like.delete()
-    return redirect('homepage')
+    return redirect('landing')
