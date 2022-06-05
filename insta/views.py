@@ -45,13 +45,12 @@ def search_results(request):
     return render(request, 'search.html')
 
 @login_required(login_url='/accounts/login/')
-def profile(request,profileId):
-
-    profile = Profile.objects.get(pk = profileId)
-    images = Image.objects.filter(id=profile.id).all()
-
-    return render(request,"profile/profile.html",{"profile":profile,"images":images})
-
+def profile(request,user_id):
+    current_user=get_object_or_404(User,id=user_id)
+    # current_user = request.user
+    images = Image.objects.filter(user=current_user)
+    profile = get_object_or_404(Profile,id = current_user.id)
+    return render(request, 'profile/profile.html', {"images": images, "profile": profile})
 @login_required(login_url='/accounts/login/')
 def add_image(request):
     if request.method=='POST':

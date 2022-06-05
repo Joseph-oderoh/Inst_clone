@@ -40,11 +40,11 @@
   <li>
   <a href="/accounts/password/change">Change Password</a>
   </li>
-  {% for profile in profiles%}
+
   <li class="">
-    <a class="" href="{% url 'profile' profileId=profile.id %}"> profile</a>
+    <a href="/user/{{request.user.id}}">Profile</a>
 </li>
-{% endfor %}
+
   <li>
   <a href="/logout">Logout</a>
   </li>
