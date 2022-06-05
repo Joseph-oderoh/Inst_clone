@@ -8,9 +8,9 @@
       <div class="col-md-1"></div>
          <div class="col-md-9">
           {% if profile.profile_photo%}
-            <img src="{{image.user.profile.profile_photo.url}}" alt=""height="300px"  class="img-responsive"width="100%" style="border-radius: 50%;">
+            <img src="{{profile.profile_photo.url}}" alt=""height="300px"  class="img-responsive">
             {%else%}
-            <img src="https://wallpaperaccess.com/full/745085.jpg" alt=""class="rounded-circle border"height="80" width="80" style="border-radius: 50%;">
+            
             {%endif%}
             
             {% if profile.bio%}

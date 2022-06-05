@@ -42,7 +42,7 @@ class Image(models.Model):
         images = cls.objects.filter(name__icontains=search_term).all()
         return images
 class Profile(models.Model):
-    profile_photo=models.ImageField(upload_to = 'pictures/')
+    profile_photo=CloudinaryField('pictures')
     bio=models.TextField()
     first_name=models.CharField(max_length=20,null=True)
     last_name=models.CharField(max_length=20,null=True)
@@ -78,7 +78,7 @@ class Comment(models.Model):
     content=models.TextField(null=True)
     
     def __str__(self):
-        return (self.user)
+        return (self.image)
     def save_comment(self):
         self.save()
 
