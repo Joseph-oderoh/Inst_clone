@@ -12,8 +12,9 @@ body{
 
 
 .row{
-     display: flex;
-     flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .prof{
@@ -28,4 +29,15 @@ body{
 .lik{
     border: solid 2px lime;
     outline: none;
+}
+
+
+.Suggestion{
+    background-color: rgba(255, 255, 255, 0.774);
+    height: 50vh;
+    margin-top: 29px;
+}
+.side{
+    display: flex;
+    justify-content: space-between;
 }

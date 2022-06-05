@@ -16,14 +16,25 @@
             <a href="#" ><img  class="lik" src="https://i.pinimg.com/564x/86/7a/db/867adba397e0e3a055b1960c05b2a1fa.jpg  " alt=""class="rounded-circle border"height="80" width="80" style="border-radius: 50%;"></a>  
         </div>
         <div class="row">
-            
-            <div class="col-md-6">
+            <div class="col-md-6 Suggestion mt-10 ">
+                <a href="#" ><img  class="lik" src="https://i.pinimg.com/564x/15/19/0a/15190a37b83af044d8548dc0a5eddf2b.jpg" alt=""class="rounded-circle border mr-20"height="80" width="80" style="border-radius: 50%;"></a>
+               <div class="side"> <p>JOdeo@insea</p>  <a href="#" >switch</a></div>
+
+               <div class="side"> <p>Sugestion for you</p>  <a href="#" >See All</a></div>
                 
+                <a href="#" > <p>deo@insta</p> </a>
+                <a href="#" > <p>kenzeo@insta</p> </a>
+                <a href="#" > <p>JOdeo@insta</p> </a>
+                <a href="#" ><p>JOseo@instaa</p> </a>
+
+        </div>
+            <div class="col-md-6">
                 {% if images %}
                 {% for image in images %}
 
-                
+             
                 <div class="row">
+                     
                     <div class="card pt-3 mt-4">
                         <div class="card-header head">
                             <div>
@@ -90,22 +101,22 @@
                                 <p>Posted {{image.image_date|timesince}}</p>
                             </p>
                         </div>
-                        
-
                     </div>
+                    
                     {% endfor %}
                     {% endif %}
-
-                    
-                </div>
-                <div class="col-md-4">
-                    <p>Suggestion </p>
+                   
+                
                 </div>
             
             </div>
+
             
         </div>
+      
+    </div>
 
-
+       
     
         {%endblock%}
+
