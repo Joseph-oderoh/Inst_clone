@@ -20,3 +20,12 @@ body{
     padding: 30px;
     background-color: wheat;
 }
+
+.insta{
+    background-color: white;
+    
+}
+.lik{
+    border: solid 2px lime;
+    outline: none;
+}

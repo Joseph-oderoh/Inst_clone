@@ -5,14 +5,23 @@
 {{block.super}}
 
 <body>
+    
 
     <div class="container">
-
+        <div class="insta">
+            <a href="#" ><img  class="lik" src="https://i.pinimg.com/564x/fa/a9/97/faa997115f4fdfaa2b40197a8d9081f8.jpg" alt=""class="rounded-circle border"height="80" width="80" style="border-radius: 50%;"></a>
+            <a href="#" ><img  class="lik" src="https://i.pinimg.com/564x/15/19/0a/15190a37b83af044d8548dc0a5eddf2b.jpg" alt=""class="rounded-circle border"height="80" width="80" style="border-radius: 50%;"></a>
+            <a href="#" ><img  class="lik" src="https://images.unsplash.com/photo-1602518416576-c0d4a387da35?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmxhY2slMjBhZXN0aGV0aWN8ZW58MHx8MHx8&w=1000&q=80" alt=""class="rounded-circle border"height="80" width="80" style="border-radius: 50%;"></a> 
+            <a href="#" ><img  class="lik" src="https://i.pinimg.com/564x/30/df/cc/30dfcce057334884f09151953fbe5db1.jpg" alt=""class="rounded-circle border"height="80" width="80" style="border-radius: 50%;"></a>    
+        </div>
         <div class="row">
             
             <div class="col-md-6">
+                
                 {% if images %}
                 {% for image in images %}
+
+                
                 <div class="row">
                     <div class="card pt-3 mt-4">
                         <div class="card-header head">
@@ -65,7 +74,7 @@
                                             {%if image.comments.all|length > 0%}
                                             view all  {{image.comments.all|length}} comments
                                             {% else %}
-                                            No comments yet click to add!
+                                            No comments click to add!
                                             {% endif %}
                                         </a></span>
                                 </p>
