@@ -66,9 +66,9 @@ class Profile(models.Model):
         if created:
             Profile.objects.create(user=instance)
 
-    # @receiver(post_save, sender=User)
-    # def save_user_profile(sender, instance, **kwargs):
-    #     instance.profile.save()
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()
     @classmethod
     def search_profiles(cls, search_term):
         profiles = cls.objects.filter(user__username__icontains=search_term).all()
@@ -103,8 +103,7 @@ class Likes(models.Model):
     # update like
     def update_likes(self, name):
         self.name = name
-        self.save()
-
+ 
      # delete like from database
     def delete_likes(self):
         self.delete()
