@@ -1,50 +1,22 @@
 {%extends 'base.html'%}
-{% load crispy_forms_tags %}
 {% block content %}
-{{block.super}}
-<form action="" method="POST" enctype="multipart/form-data" >
-    {% csrf_token %}
-{{form|crispy}}
+{{ block.super}}
+{% load bootstrap4 %}
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <title>New Profile</title>
+  {{form.media}}
 
-<button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="card mx-auto" style="max-width:50rem; margin-top:50px;">
+  <form  action="" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+
+    {% bootstrap_form form%}
+    <input type="submit" class="btn btn-success btn-lg" value="Post">
+  </form>
+</div>
+   {% block scripts %}
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+  {% bootstrap_javascript %}
 {% endblock %}
-
-<div class="row ">
-    {% for photo in photos %}
-    <div class="col-md-4">
-      <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal{{photo.id}}">
-        <img src="{{photo.image.url}}" class="img-responsive" alt="Image" height="300px" width="100%">
-       
-      </a>
-      <div class="col-md-4"></div>
-      <div class="col-md-4"></div>
-    </div>
-
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal{{photo.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel" st>{{photo.name}}</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p><b>Description:</b>{{photo.description}} <br> <b>Location:</b> {{photo.location}}</p>
-
-            <div class="row">
-              <img src="{{photo.image.url}}" class="img-fluid" alt="Image">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <input type="text" id="imagelink" value="{{photo.image.url}}"
-              class="btn btn-outline-primary form-control photoUrl" readonly>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
+{% endblock %}

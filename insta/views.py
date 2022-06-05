@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render,redirect
 import datetime as dt
 from django.contrib.auth.decorators import login_required
-from .forms import *
+from .models import *
 from .models import Image,Profile,Likes,Comment
 from django.http  import HttpResponse,Http404
 from django.contrib import messages
