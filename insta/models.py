@@ -124,3 +124,21 @@ class CommentForm(ModelForm):
         widgets= {
             'content':forms.Textarea(attrs={'rows':2,})
         }
+        
+        
+        
+class Follow(models.Model):
+    users=models.ManyToManyField(User,related_name='follow')
+    current_user=models.ForeignKey(User,related_name='c_user',null=True, on_delete=models.CASCADE)
+
+    @classmethod
+    def follow(cls,current_user,new):
+        friends,created=cls.objects.get_or_create(current_user=current_user)
+        friends.users.add(new)
+
+    @classmethod
+    def unfollow(cls,current_user,new):
+        friends,created=cls.objects.get_or_create(current_user=current_user)
+        friends.users.remove(new)
+
+       

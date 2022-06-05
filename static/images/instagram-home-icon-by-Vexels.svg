@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Designed by Vexels.com - 2017 All Rights Reserved - https://vexels.com/terms-and-conditions/-->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1200 1200" enable-background="new 0 0 1200 1200" xml:space="preserve">
+<g>
+	<g>
+		<g>
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="50" y1="600.1048" x2="1150" y2="600.1048">
+				<stop  offset="0" style="stop-color:#FDF440"/>
+				<stop  offset="0.2586" style="stop-color:#F94A2F"/>
+				<stop  offset="0.3244" style="stop-color:#F74734"/>
+				<stop  offset="0.3992" style="stop-color:#F13D41"/>
+				<stop  offset="0.4781" style="stop-color:#E72E58"/>
+				<stop  offset="0.5538" style="stop-color:#DA1A75"/>
+				<stop  offset="1" style="stop-color:#2B4AE2"/>
+			</linearGradient>
+			<path fill="url(#SVGID_1_)" d="M1150,1118H679V867.843c0-41.332-36.821-76.251-79-76.251s-79,34.919-79,76.251V1118H50V592.201
+				L600,82.21l550,509.991V1118z M779,1018h271V635.725L600,217.933L150,635.725V1018h279V867.843
+				c0-96.966,77.174-175.852,175-175.852s175,78.886,175,175.852V1018z"/>
+		</g>
+	</g>
+</g>
+</svg>

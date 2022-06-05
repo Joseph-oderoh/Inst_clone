@@ -92,3 +92,5 @@ def like_image(request, image_id):
     else:
         like.delete()
     return redirect('landing')
+
+
