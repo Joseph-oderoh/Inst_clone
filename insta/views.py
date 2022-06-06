@@ -8,7 +8,7 @@ from django.contrib import messages
 
 
 # Create your views here.
-@login_required(login_url='/accounts/login/')
+
 def homepage(request):
     images=Image.objects.all()
     

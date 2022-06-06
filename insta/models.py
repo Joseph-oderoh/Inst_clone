@@ -50,7 +50,7 @@ class Profile(models.Model):
     user_name=models.CharField(max_length=20,null=True)
    
     def __str__(self):
-        return f'{self.user_name} Profile'
+        return self.user_name
 
     def save_profile(self):
         self.save()
@@ -63,11 +63,7 @@ class Profile(models.Model):
      # delete profile from database
     def delete_profile(self):
         self.delete()
-    @receiver(post_save, sender=User)
-    def create_user_profile(sender, instance, created, **kwargs):
-        if created:
-            Profile.objects.create(user=instance)
-
+ 
   
     @classmethod
     def search_profiles(cls, search_term):
