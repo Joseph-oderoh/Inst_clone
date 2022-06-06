@@ -16,10 +16,10 @@ class Image(models.Model):
     image_date = models.DateTimeField(auto_now_add=True ,null=True)
     name = models.CharField(max_length =30)
     caption = models.TextField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='image' )
     
     def __str__(self):
-        return self.user
+        return (self.user)
     # save image
     def save_image(self):
         self.save()
@@ -42,7 +42,7 @@ class Image(models.Model):
         images = cls.objects.filter(name__icontains=search_term).all()
         return images
 class Profile(models.Model):
-    user=models.OneToOneField(User,on_delete=models.CASCADE, related_name='profile'),
+    user=models.OneToOneField(User,on_delete=models.CASCADE, null=True ,related_name='profile')
     profile_photo=CloudinaryField('pictures')
     bio=models.TextField()
     first_name=models.CharField(max_length=20,null=True)
@@ -50,7 +50,7 @@ class Profile(models.Model):
     user_name=models.CharField(max_length=20,null=True)
    
     def __str__(self):
-        return self.user_name
+        return (self.user_name)
 
     def save_profile(self):
         self.save()
@@ -70,7 +70,7 @@ class Profile(models.Model):
         profiles = cls.objects.filter(user__username__icontains=search_term).all()
         return profiles
 class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,  null=True)
     image = models.ForeignKey(Image, on_delete=models.CASCADE)
     comment_date = models.DateTimeField(auto_now_add=True)
     content=models.TextField(null=True)
