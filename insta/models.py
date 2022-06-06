@@ -42,7 +42,7 @@ class Image(models.Model):
         images = cls.objects.filter(name__icontains=search_term).all()
         return images
 class Profile(models.Model):
-   
+    user=models.OneToOneField(User,on_delete=models.CASCADE, related_name='profile'),
     profile_photo=CloudinaryField('pictures')
     bio=models.TextField()
     first_name=models.CharField(max_length=20,null=True)
